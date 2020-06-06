@@ -58,7 +58,7 @@ Vue.use(preview)
 </script>
 ```
 
-### 组件式
+### 函数式
 ``` javascript
 // 局部引入
 import preview from 'simple-vue-preview'

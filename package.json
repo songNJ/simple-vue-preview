@@ -2,7 +2,7 @@
   "name": "simple-vue-preview",
   "version": "1.0.0",
   "description": "一款基于vue的图片预览插件",
-  "main": "./src/index.js",
+  "main": "/dist/simple-vue-preview.min.js",
   "scripts": {
     "build": "webpack -p"
   },
@@ -20,9 +20,9 @@
   "author": "jiangniansong",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LS1231/vue-preview/issues"
+    "url": "https://github.com/songNJ/simple-vue-preview/issues"
   },
-  "homepage": "https://github.com/LS1231/vue-preview#readme",
+  "homepage": "https://github.com/songNJ/simple-vue-preview#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.3",
