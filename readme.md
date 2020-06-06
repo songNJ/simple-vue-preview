@@ -4,6 +4,8 @@
 
 ## Demo
 
+[Live Demo >>](https://tb.akxynt.cn/preview.html)
+
 ## Installation
 
 ``` bash
