@@ -4,15 +4,15 @@
       <div class="preview-header-left">{{ this.current + 1 }}/{{ this.data.length }}</div>
       <div class="preview-header-center">{{ title }}</div>
       <div class="preview-header-right" @click="closed">
-        <a-icon type="close" style="font-size: 26px" />
+        <img src="./images/times.png" style="width:26px;" alt="">
       </div>
     </div>
     <div class="preview-bottom">
-      <a-icon @click="last" type="arrow-left" style="font-size:26px; color:#fff" />
-      <a-icon @click="next" type="arrow-right" style="font-size:26px; color:#fff" />
-      <a-icon @click="big" type="plus-circle" style="font-size:26px; color:#fff" />
-      <a-icon @click="small" type="minus-circle" style="font-size:26px; color:#fff" />
-      <a-icon @click="trans" type="redo" style="font-size:28px; color:#fff" />
+      <img src="./images/arrow-left.png" @click="last" type="arrow-left" style="width:26px;" />
+      <img src="./images/arrow-right.png" @click="next" type="arrow-right" style="width:26px;" />
+      <img src="./images/search-plus.png" @click="big" type="plus-circle" style="width:26px;" />
+      <img src="./images/search-minus.png" @click="small" type="minus-circle" style="width:26px;" />
+      <img src="./images/redo.png" @click="trans" type="redo" style="width:26px;" />
       <p></p>
     </div>
     <img
@@ -51,18 +51,41 @@ export default {
     rotate: {
       type: Number,
       default: 90
+    },
+    currents: {
+      type: Number,
+      default: 1
+    },
+    value: {
+      type: Boolean,
+      default: false
     }
   },
   watch: {
-    data(val) {
-      val.forEach(({ url }, index) => {
-        this.styles = this.styles.concat({})
-        this.scales = this.scales.concat(1)
-        this.rotates = this.rotates.concat(0)
-        const image = new Image()
-        image.src = url
-        image.onload = e => this.imgLoad(e, index)
-      })
+    value: {
+      handler(val) {
+        this.show = val
+      },
+      immediate: true
+    },
+    data: {
+      handler(val) {
+        val.forEach(({ url }, index) => {
+          this.styles = this.styles.concat({})
+          this.scales = this.scales.concat(1)
+          this.rotates = this.rotates.concat(0)
+          const image = new Image()
+          image.src = url
+          image.onload = e => this.imgLoad(e, index)
+        })
+      },
+      immediate: true
+    },
+    currents: {
+      handler(val) {
+        this.current = val
+      },
+      immediate: true
     },
     scales: {
       handler() {
@@ -102,6 +125,7 @@ export default {
     compute() {},
     closed() {
       this.show = false
+      this.$emit('input', false)
       this.$nextTick().then(() => {
         this.$emit('close')
       })

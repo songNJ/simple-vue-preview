@@ -12,6 +12,8 @@ module.exports = {
       {test: /\.vue$/, loader: 'vue-loader'},
       // use css-loader for .css files
       {test: /\.css/, loader: 'css-loader'},
+      // use url-loader for .(png|jpe?g|gif|svg) files
+      {test: /\.(png|jpe?g|gif|svg)(\?.*)?$/, loader: 'url-loader'}
     ]
   },
   // default for pretty much every project

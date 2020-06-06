@@ -87,6 +87,8 @@ this.$preview({
 | data  | url and title[]
 | scale  | 放大缩小比例,默认1.5
 | rotate  | 旋转比例,默认+90
+| value(v-model)  | 是否显示预览
+| currents  | 当前预览第几张图片
 
 ### Events
 

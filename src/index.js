@@ -25,10 +25,13 @@ function createInstance () {
   return preview
 }
 
-Preview.install = () => {
-  Vue.component('vue-preview', Preview)
+Preview.install = (Vue) => {
+  Vue.component('vue-preview', _Preview)
 }
 
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(Preview)
+}
 Vue.prototype.$preview = Preview
 
 export default Preview

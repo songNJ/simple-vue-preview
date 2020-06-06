@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue-preview</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="dist/simple-vue-preview.min.js"></script>
+  <style>
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #app {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    h5 {
+      margin: 40px;
+    }
+
+    .test img {
+      width: 100px;
+      margin: 0 20px;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <h1>Vue Preview</h1>
+  <div class="test">
+    <img v-for="(item, index) in data" :key="index" :src="item.url" @click="showImg(index)" alt="">
+  </div>
+  <vue-preview v-model="show" :currents="current" :data="data" @close="handleClose"></vue-preview>
+</div>
+<script>
+  var app = new Vue({
+    el: '#app',
+    data () {
+      return {
+        data: [
+          {
+            url: 'https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_b.jpg'
+          },
+          {
+            url: 'https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_b.jpg'
+          }
+        ],
+        show: false,
+        current: 0
+      }
+    },
+    methods: {
+      handleClose () {
+        console.log('close event')
+      },
+      showImg (index){
+        this.current = index,
+        this.show = true
+      }
+    }
+  })
+  Vue.use(SimpleVuePreview)
+</script>
+</body>
+</html>
